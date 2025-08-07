@@ -1,16 +1,16 @@
-import Navbar from '../components/Navbar';
 import HeroSection from '../components/HeroSection';
-import Projects from '../components/Projects';
+import Projects from '../pages/Projects';
 import ContactForm from '../components/ContactForm';
 import Footer from '../components/Footer';
 
 function Home() {
   return (
     <>
-      <Navbar />
-      <HeroSection />
-      <Projects />
-      <ContactForm />
+      <main>
+        <HeroSection />
+        <Projects />
+        <ContactForm />
+      </main>
       <Footer />
     </>
   );
