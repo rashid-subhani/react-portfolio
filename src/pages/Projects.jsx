@@ -1,37 +1,16 @@
-import styles from './Projects.module.css';
+import ProjectGrid from "../components/ProjectGrid.jsx";
 
-
-function Projects() {
+export default function Projects(){
   return (
-    <section id="projects" className={styles.projectsSection}>
-      <h2 style={{textAlign: 'center', fontSize: '2.5rem', marginBottom: '40px'}}>Projects</h2>
-      <div className={styles.projectsGrid}>
-        <div className={styles.projectCard}>
-          <h3 className={styles.projectTitle}>Project One</h3>
-          <p>A brief description of your first project. Highlight the tech used and key features.</p>
-          <a href="#" className={styles.projectLink} target="_blank" rel="noopener noreferrer">
-            View Project
-          </a>
-        </div>
-
-        <div className={styles.projectCard}>
-          <h3 className={styles.projectTitle}>Project Two</h3>
-          <p>A brief description of your second project.</p>
-          <a href="#" className={styles.projectLink} target="_blank" rel="noopener noreferrer">
-            View Project
-          </a>
-        </div>
-
-        <div className={styles.projectCard}>
-          <h3 className={styles.projectTitle}>Project Three</h3>
-          <p>Description of your third project and technologies used.</p>
-          <a href="#" className={styles.projectLink} target="_blank" rel="noopener noreferrer">
-            View Project
-          </a>
-        </div>
-      </div>
-    </section>
+    <>
+      <ProjectGrid/>
+      <section className="card">
+        <h2 style={{marginTop:0}}>How it’s built</h2>
+        <p style={{color:"var(--muted)"}}>
+          This portfolio is a React + Vite app with client-side routing and a filterable projects grid.
+          Data lives in <code>src/data/projects.js</code> and can be swapped for a GitHub API feed later.
+        </p>
+      </section>
+    </>
   );
 }
-
-export default Projects;

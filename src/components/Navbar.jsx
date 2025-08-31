@@ -1,34 +1,26 @@
-import { Link } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 
-function Navbar() {
+export default function Navbar(){
+  const { pathname } = useLocation();
   return (
-    <nav className="bg-white shadow p-4 flex justify-between items-center">
-      <h1 className="text-2xl font-bold">My Portfolio</h1>
-      <ul className="flex space-x-4">
-        <li>
-          <Link to="/" className="hover:text-blue-500">
-            Home
-          </Link>
-        </li>
-        <li>
-          <Link to="/about" className="hover:text-blue-500">
-            About
-          </Link>
-        </li>
-        <li>
-          <Link to="/projects" className="hover:text-blue-500">
-            Projects
-          </Link>
-        </li>
-        <li>
-          <Link to="/contact" className="hover:text-blue-500">
-            Contact
-          </Link>
-        </li>
-      </ul>
+    <nav style={{display:"flex",justifyContent:"space-between",alignItems:"center"}}>
+      <div style={{fontWeight:700, letterSpacing:".5px"}}>Rashid Subhani</div>
+      <div className="links">
+        {[
+          {to:"/",label:"Home"},
+          {to:"/about",label:"About"},
+          {to:"/projects",label:"Projects"},
+          {to:"/contact",label:"Contact"},
+        ].map(l => (
+          <NavLink
+            key={l.to}
+            to={l.to}
+            className={({isActive}) => isActive || pathname===l.to ? "active" : ""}
+          >
+            {l.label}
+          </NavLink>
+        ))}
+      </div>
     </nav>
   );
 }
-
-export default Navbar;
-

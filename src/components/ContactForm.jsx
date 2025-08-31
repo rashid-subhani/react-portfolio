@@ -1,62 +1,40 @@
-// components/ContactForm.jsx
 import { useForm } from "react-hook-form";
-import styles from "./ContactForm.module.css";
-import { useState } from "react";
 
-function ContactForm() {
-  const { register, handleSubmit, formState: { errors }, reset } = useForm();
-  const [submitted, setSubmitted] = useState(false);
+export default function ContactForm(){
+  const { register, handleSubmit, formState:{errors, isSubmitSuccessful}, reset } = useForm();
 
   const onSubmit = (data) => {
-    console.log(data);
-    setSubmitted(true);
-    reset(); // clear form
+    // In real app, POST to your API or use EmailJS / Formspree.
+    console.log("Contact submission:", data);
+    reset();
+    alert("Thanks! I will get back to you soon.");
   };
 
   return (
-    <section className={styles.contactSection}>
-      <h2 className={styles.contactTitle}>Get in Touch</h2>
+    <form onSubmit={handleSubmit(onSubmit)} className="card" style={{display:"grid",gap:"1rem"}}>
+      <h2 style={{margin:0}}>Get in touch</h2>
 
-      <form onSubmit={handleSubmit(onSubmit)} className={styles.contactForm}>
-        <input
-          placeholder="Name"
-          {...register("name", { required: "Name is required" })}
-          className={styles.contactInput}
-        />
-        {errors.name && <p style={{ color: "red" }}>{errors.name.message}</p>}
+      <div className="row">
+        <div>
+          <label>Name</label>
+          <input {...register("name",{required:true,minLength:2})} placeholder="Your name"/>
+          {errors.name && <small style={{color:"#f87171"}}>Please enter your name.</small>}
+        </div>
+        <div>
+          <label>Email</label>
+          <input type="email" {...register("email",{required:true, pattern:/^\S+@\S+$/i})} placeholder="you@example.com"/>
+          {errors.email && <small style={{color:"#f87171"}}>Valid email required.</small>}
+        </div>
+      </div>
 
-        <input
-          placeholder="Email"
-          {...register("email", {
-            required: "Email is required",
-            pattern: {
-              value: /^\S+@\S+$/i,
-              message: "Enter a valid email address",
-            },
-          })}
-          className={styles.contactInput}
-        />
-        {errors.email && <p style={{ color: "red" }}>{errors.email.message}</p>}
+      <div>
+        <label>Message</label>
+        <textarea rows="5" {...register("message",{required:true,minLength:10})} placeholder="How can I help?"/>
+        {errors.message && <small style={{color:"#f87171"}}>Please add a message (min 10 chars).</small>}
+      </div>
 
-        <textarea
-          placeholder="Message"
-          {...register("message", { required: "Message is required" })}
-          className={styles.contactTextarea}
-          rows={5}
-        />
-        {errors.message && <p style={{ color: "red" }}>{errors.message.message}</p>}
-
-        <button type="submit" className={styles.contactButton}>Send</button>
-
-        {submitted && (
-          <p style={{ color: "green", textAlign: "center", marginTop: "16px" }}>
-            Thank you! Your message has been sent.
-          </p>
-        )}
-      </form>
-    </section>
+      <button className="btn brand" type="submit">Send Message</button>
+      {isSubmitSuccessful && <span className="badge">Message sent ✔</span>}
+    </form>
   );
 }
-
-export default ContactForm;
-

@@ -1,12 +1,15 @@
-import ContactForm from '../components/ContactForm';
+import ContactForm from "../components/ContactForm.jsx";
 
-function Contact() {
+export default function Contact(){
   return (
-    <div>
-      <h1>Contact Page</h1>
-      <ContactForm />
+    <div className="grid" style={{gap:"1rem"}}>
+      <section className="card">
+        <h1 style={{margin:0}}>Contact</h1>
+        <p style={{color:"var(--muted)"}}>
+          Have a question or a project in mind? Send me a message and I’ll get back to you.
+        </p>
+      </section>
+      <ContactForm/>
     </div>
   );
 }
-
-export default Contact;

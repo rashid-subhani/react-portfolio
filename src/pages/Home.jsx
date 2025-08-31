@@ -1,19 +1,13 @@
-import HeroSection from '../components/HeroSection';
-import Projects from '../pages/Projects';
-import ContactForm from '../components/ContactForm';
-import Footer from '../components/Footer';
+import HeroSection from "../components/HeroSection.jsx";
+import Skills from "../components/Skills.jsx";
+import ProjectGrid from "../components/ProjectGrid.jsx";
 
-function Home() {
+export default function Home(){
   return (
-    <>
-      <main>
-        <HeroSection />
-        <Projects />
-        <ContactForm />
-      </main>
-      <Footer />
-    </>
+    <div className="grid" style={{gap:"1.2rem"}}>
+      <HeroSection/>
+      <Skills/>
+      <ProjectGrid initialFilter="All"/>
+    </div>
   );
 }
-
-export default Home;

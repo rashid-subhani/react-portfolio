@@ -1,15 +1,16 @@
-function About() {
+export default function About(){
   return (
-    <section className="max-w-3xl mx-auto p-8">
-      <h1 className="text-4xl font-bold mb-6">About Me</h1>
-      <p className="text-lg text-gray-700 mb-4">
-        Hello! I'm Rashid Subhani, a passionate Full Stack Developer with experience in modern web technologies.
+    <section className="card" style={{display:"grid",gap:"1rem"}}>
+      <h1 style={{margin:"0"}}>About Me</h1>
+      <p>
+        I’m a full-stack developer focused on building accessible, performant web apps.
+        I enjoy turning complex requirements into intuitive user experiences and robust APIs.
       </p>
-      <p className="text-lg text-gray-700">
-        I enjoy building clean, performant, and user-friendly web applications. When I'm not coding, I like reading tech blogs and exploring new tools.
-      </p>
+      <ul style={{margin:0, paddingLeft:"1.2rem", color:"var(--muted)"}}>
+        <li>Stack: React, Node.js, Express, MySQL, Sequelize</li>
+        <li>Testing curiosity: Playwright, Vitest (roadmap)</li>
+        <li>Currently exploring: React performance and CI/CD</li>
+      </ul>
     </section>
   );
 }
-
-export default About;
