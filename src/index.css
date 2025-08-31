@@ -54,3 +54,10 @@ footer{border-top:1px solid #1f2937;margin-top:3rem;padding:2rem 0;color:var(--m
 .hero h1{font-size:clamp(2rem,4vw,3rem);margin:0}
 .hero p{color:var(--muted);margin:0}
 .tags{display:flex;flex-wrap:wrap;gap:.5rem}
+
+.social-links {
+  display: flex;
+  gap: 15px; /* adds equal spacing between items */
+  justify-content: center; /* optional, centers them */
+}
+

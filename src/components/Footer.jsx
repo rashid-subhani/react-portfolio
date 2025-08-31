@@ -3,7 +3,7 @@ export default function Footer(){
   return (
     <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",flexWrap:"wrap"}}>
       <span>© {year} Rashid Subhani</span>
-      <div className="links">
+      <div className="social-links">
         <a href="https://github.com/rashid-subhani" target="_blank" rel="noreferrer">GitHub</a>
         <a href="https://www.linkedin.com/in/rashid-subhani/" target="_blank" rel="noreferrer">LinkedIn</a>
         <a href="/contact">Contact</a>
